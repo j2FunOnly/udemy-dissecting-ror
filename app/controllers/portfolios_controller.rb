@@ -36,6 +36,13 @@ class PortfoliosController < ApplicationController
     end
   end
 
+  def destroy
+    @portfolio = Portfolio.find(params[:id])
+    @portfolio.destroy
+
+    redirect_to portfolios_path, notice: 'Record was removed'
+  end
+
   private
 
   def portfolio_params
