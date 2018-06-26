@@ -1,6 +1,10 @@
 class PortfoliosController < ApplicationController
   def index
-    @portfolio_items = Portfolio.all
+    @portfolio_items = if params[:subtitle].present?
+      Portfolio.subtitle_items(params[:subtitle])
+    else
+      Portfolio.all
+    end
   end
 
   def show
