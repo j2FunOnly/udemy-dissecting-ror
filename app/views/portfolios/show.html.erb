@@ -2,6 +2,7 @@
 
 <h1><%= @portfolio.title %></h1>
 <em><%= @portfolio.subtitle %></em>
-
 <p><%= @portfolio.body %></p>
+<h2>Technologies used:</h2>
+<p><%= @portfolio.technologies.pluck(:name).join(', ') %></p>
 <p><%= link_to 'Portfolios', portfolios_path %></p>
