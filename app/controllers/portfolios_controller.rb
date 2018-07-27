@@ -1,4 +1,5 @@
 class PortfoliosController < ApplicationController
+  layout 'portfolio'
   before_action :set_portfolio, except: [:index, :new, :create]
 
   def index
