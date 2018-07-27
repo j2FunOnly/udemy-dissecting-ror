@@ -5,11 +5,14 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   def index
     @blogs = Blog.order(:created_at)
+    @page_title = "My Portfolio Blog"
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @page_title = @blog.title
+    @seo_keywords = @blog.body
   end
 
   # GET /blogs/new
@@ -63,7 +66,7 @@ class BlogsController < ApplicationController
 
   def toggle_status
     @blog.draft? ? @blog.published! : @blog.draft!
-    
+
     redirect_to blogs_path, notice: 'Blog status was updated'
   end
 
