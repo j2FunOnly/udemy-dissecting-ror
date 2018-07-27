@@ -5,7 +5,6 @@ Rails.application.routes.draw do
       sign_out: 'logout',
       sign_up: 'register'
     }
-  root 'pages#home'
 
   get 'about-me', to: 'pages#about'
   get 'contact', to: 'pages#contact'
@@ -18,4 +17,6 @@ Rails.application.routes.draw do
       post :toggle_status
     end
   end
+
+  root 'pages#home'
 end

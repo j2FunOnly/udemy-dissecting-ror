@@ -1,4 +1,6 @@
 class PortfoliosController < ApplicationController
+  before_action :set_portfolio, except: [:index, :new, :create]
+
   def index
     @portfolio_items = if params[:subtitle].present?
       Portfolio.subtitle_items(params[:subtitle])
@@ -8,7 +10,6 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    @portfolio = Portfolio.find(params[:id])
   end
 
   def new
@@ -20,20 +21,16 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
 
     if @portfolio.save
-      redirect_to portfolios_path #, notice: 'Portfolio has been created'
+      redirect_to portfolios_path
     else
-      # flash.now[:notice] = 'Could not create portfolio'
       render :new
     end
   end
 
   def edit
-    @portfolio = Portfolio.find(params[:id])
   end
 
   def update
-    @portfolio = Portfolio.find(params[:id])
-
     if @portfolio.update(portfolio_params)
       redirect_to portfolios_path
     else
@@ -42,13 +39,15 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
-    @portfolio = Portfolio.find(params[:id])
     @portfolio.destroy
-
     redirect_to portfolios_path, notice: 'Record was removed'
   end
 
   private
+
+  def set_portfolio
+    @portfolio = Portfolio.find(params[:id])
+  end
 
   def portfolio_params
     params.require(:portfolio)
