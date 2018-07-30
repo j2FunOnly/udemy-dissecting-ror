@@ -15,4 +15,8 @@ module ApplicationHelper
     greeting = "Thank you for visiting me from #{escape_once session[:source]}"
     content_tag :p, greeting, class: 'source-greeting'
   end
+
+  def generate_copyright
+    SimpleViewToolService::Renderer.copyright 'j2FunOnly', 'Sample message'
+  end
 end
