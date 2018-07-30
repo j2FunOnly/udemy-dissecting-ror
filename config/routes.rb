@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact'
 
   resources :portfolios, except: [:show]
-  get 'porfolio/:id', to: 'portfolios#show', as: 'portfolio_show'
+  get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio_show'
 
   resources :blogs do
     member do

@@ -1,5 +1,8 @@
 class PortfoliosController < ApplicationController
   layout 'portfolio'
+
+  access all: [:show, :index], site_admin: :all
+
   before_action :set_portfolio, except: [:index, :new, :create]
 
   def index

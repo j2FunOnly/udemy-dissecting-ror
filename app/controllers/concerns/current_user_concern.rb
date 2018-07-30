@@ -6,11 +6,9 @@ module CurrentUserConcern
   end
 
   def guest_user
-    OpenStruct.new(
-      first_name: 'Guest',
-      last_name: 'User',
-      name: 'Guest User',
-      email: 'example@example.com'
-    )
+    @guest ||= GuestUser.new.tap do |g|
+      g.name = "Guest User"
+      g.email = "guest@example.com"
+    end
   end
 end
