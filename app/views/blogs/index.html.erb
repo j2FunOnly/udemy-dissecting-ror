@@ -13,12 +13,10 @@
     <%= link_to 'New Blog Post', new_blog_path,  class: 'pull-right btn btn-primary' if logged_in?(:site_admin) %>
 
   </h3>
+  <%= paginate @blogs %>
 
   <%= render @blogs %>
 
-  <nav class="blog-pagination">
-    <a class="btn btn-outline-primary" href="#">Older</a>
-    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-  </nav>
+  <%= paginate @blogs %>
 
 </div><!-- /.blog-main -->
