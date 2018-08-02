@@ -20,7 +20,24 @@ module ApplicationHelper
     SimpleViewToolService::Renderer.copyright 'j2FunOnly', 'Sample message'
   end
 
-  def nav_link_class(page = nil)
-    "nav-link #{'active' if current_page?(page)}"
+  def nav_items
+    [
+      {url: root_path, title: 'Home'},
+      {url: about_me_path, title: 'About me'},
+      {url: contact_path, title: 'Contact me'},
+      {url: blogs_path, title: 'My Blog'},
+      {url: portfolios_path, title: 'Portfolio'}
+    ]
+  end
+
+  def nav_helper(style = '', tag_type = false)
+    nav_items.map do |item|
+      nav = "<a href='#{item[:url]}' class='#{style} #{nav_active? item[:url]}'>#{item[:title]}</a>".html_safe
+      tag_type ? content_tag(tag_type, nav) : nav
+    end.join('').html_safe
+  end
+
+  def nav_active?(path)
+    'active' if current_page? path
   end
 end

@@ -6,11 +6,7 @@ class PortfoliosController < ApplicationController
   before_action :set_portfolio, except: [:index, :new, :create]
 
   def index
-    @portfolio_items = if params[:subtitle].present?
-      Portfolio.subtitle_items(params[:subtitle])
-    else
-      Portfolio.all
-    end
+    @portfolio_items = Portfolio.order(:created_at)
   end
 
   def show
