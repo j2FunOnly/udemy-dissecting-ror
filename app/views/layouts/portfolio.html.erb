@@ -16,7 +16,7 @@
     <%= render 'shared/portfolio_header' %>
 
     <main role="main">
-      <%= render 'shared/portfolio_banner' %>
+      <%= render 'shared/portfolio_banner' unless logged_in?(:site_admin) %>
 
       <%= yield %>
 
