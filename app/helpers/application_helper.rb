@@ -32,7 +32,7 @@ module ApplicationHelper
 
   def nav_helper(style = '', tag_type = false)
     nav_items.map do |item|
-      nav = "<a href='#{item[:url]}' class='#{style} #{nav_active? item[:url]}'>#{item[:title]}</a>".html_safe
+      nav = link_to item[:title], item[:url], class: "#{style} #{nav_active? item[:url]}"
       tag_type ? content_tag(tag_type, nav) : nav
     end.join('').html_safe
   end
