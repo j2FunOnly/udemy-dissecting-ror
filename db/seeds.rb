@@ -1,3 +1,10 @@
+u = User.create!(
+  name: 'Admin User',
+  email: 'admin@example.com',
+  password: '135246',
+  role: :site_admin
+)
+
 3.times do |n|
   Topic.create!(title: Faker::Lorem.word)
 end
@@ -24,31 +31,17 @@ end
 
 puts 'Skills creates'
 
-8.times do |n|
-  Portfolio.create!(
+9.times do |n|
+  item = Portfolio.create!(
     title: Faker::Job.title,
     subtitle: Faker::Job.field,
     body: Faker::Lorem.paragraph,
     main_image: "https://placehold.it/600x400?text=#{n + 1}",
-    thumb_image: "https://placehold.it/350x200?text=#{n + 1}"
+    thumb_image: "https://placehold.it/350x200?text=#{n + 1}",
+    position: n + 1
   )
-end
 
-1.times do |n|
-  Portfolio.create!(
-    title: Faker::Job.title,
-    subtitle: "JavaScript",
-    body: Faker::Lorem.paragraph,
-    main_image: "https://placehold.it/600x400?text=#{n + 1}",
-    thumb_image: "https://placehold.it/350x200?text=#{n + 1}"
-  )
+  3.times { item.technologies.create!(name: Faker::ProgrammingLanguage.name) }
 end
 
 puts 'Portfolios created'
-
-first_portfolio = Portfolio.first
-3.times do |n|
-  first_portfolio.technologies.create!(name: Faker::ProgrammingLanguage.name)
-end
-
-puts 'Technologies for first portfolio created'

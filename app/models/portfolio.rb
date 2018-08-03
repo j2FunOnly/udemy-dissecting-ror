@@ -9,6 +9,8 @@ class Portfolio < ApplicationRecord
 
   scope :subtitle_items, -> (v) { where(subtitle: v) }
 
+  scope :by_position, -> { order(:position) }
+
   after_initialize :set_defaults
 
   def set_defaults

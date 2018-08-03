@@ -6,7 +6,7 @@ class PortfoliosController < ApplicationController
   before_action :set_portfolio, except: [:index, :new, :create]
 
   def index
-    @portfolio_items = Portfolio.order(:created_at)
+    @portfolio_items = Portfolio.by_position
   end
 
   def show
