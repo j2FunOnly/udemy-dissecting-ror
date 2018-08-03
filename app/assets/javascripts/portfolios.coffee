@@ -1,3 +1,22 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+setPositions = ->
+  $('.card').map((i, el) ->
+    {
+      id: el.parentElement.dataset.id
+      position: i + 1
+    }
+  ).get()
+
+ready = ->
+  $('.sortable').sortable().bind 'sortupdate', ->
+    $.ajax {
+      url: '/portfolios/positions'
+      method: 'PUT'
+      dataType: 'json'
+      data: {
+        positions: setPositions()
+      }
+      success: (resp) ->
+        console.log(resp)
+    }
+
+$(document).on 'turbolinks:load', ready

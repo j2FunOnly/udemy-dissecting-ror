@@ -3,7 +3,7 @@ class PortfoliosController < ApplicationController
 
   access all: [:show, :index], site_admin: :all
 
-  before_action :set_portfolio, except: [:index, :new, :create]
+  before_action :set_portfolio, except: [:index, :new, :create, :positions]
 
   def index
     @portfolio_items = Portfolio.by_position
@@ -41,6 +41,14 @@ class PortfoliosController < ApplicationController
   def destroy
     @portfolio.destroy
     redirect_to portfolios_path, notice: 'Record was removed'
+  end
+
+  def positions
+    params[:positions].each do |_, v|
+      Portfolio.find(v[:id]).update!(position: v[:position])
+    end
+
+    render json: {status: :ok}
   end
 
   private
