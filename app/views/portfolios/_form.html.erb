@@ -12,14 +12,14 @@
       </div>
 
       <div class="form-group">
-        <label class="btn btn-primary">
+        <label class="btn btn-sm btn-outline-dark">
           Upload thumb image
           <%= f.file_field :thumb_image, style: 'display: none;' %>
         </label>
       </div>
 
       <div class="form-group">
-        <label class="btn btn-primary">
+        <label class="btn btn-sm btn-outline-dark">
           Upload main image
           <%= f.file_field :main_image, style: 'display: none;' %>
         </label>
@@ -33,16 +33,18 @@
       </div>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-6">
       <hr>
-      <h2>Techologies used</h2>
-      <div>
-        <%= f.fields_for :technologies do |ff| %>
-          <div class="form-group">
-            <%= ff.label :name %>
-            <%= ff.text_field :name, class: 'form-control' %>
-          </div>
+      <h2>
+        Techologies used
+      </h2>
+      <div id="technologies">
+        <%= f.fields_for :technologies do |tech| %>
+          <%= render 'technology_fields', f: tech %>
         <% end %>
+        <div class="form-group">
+          <%= link_to_add_association 'Add techonolgy', f, :technologies, class: 'btn btn-sm btn-outline-secondary' %>
+        </div>
       </div>
 
       <div class="form-group">
