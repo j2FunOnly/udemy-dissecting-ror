@@ -1,6 +1,9 @@
 class Portfolio < ApplicationRecord
   include Placeholder
 
+  mount_uploader :thumb_image, PortfolioUploader
+  mount_uploader :main_image, PortfolioUploader
+
   has_many :technologies, inverse_of: :portfolio, dependent: :destroy
   accepts_nested_attributes_for :technologies,
     reject_if: -> (attrs) { attrs['name'].blank? }
