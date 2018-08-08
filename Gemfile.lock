@@ -70,6 +70,9 @@ GEM
       responders
       warden (~> 1.2.3)
     dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
+      railties (>= 3.2, < 6.0)
     erubis (2.7.0)
     execjs (2.7.0)
     faker (1.9.1)
@@ -222,7 +225,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   devise
-  dotenv (~> 2.5)
+  dotenv-rails (~> 2.5)
   faker
   font-awesome-rails (~> 4.7, >= 4.7.0.4)
   friendly_id
