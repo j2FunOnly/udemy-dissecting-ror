@@ -40,4 +40,16 @@ module ApplicationHelper
   def nav_active?(path)
     'active' if current_page? path
   end
+
+  def alerts
+    alert = flash[:alert] || flash[:error] || flash[:notice]
+
+    return unless alert
+
+    alert_generator alert
+  end
+
+  def alert_generator(msg)
+    js add_gritter(msg, title: 'j2FunOnly Portfolio Site', sticky: false)
+  end
 end

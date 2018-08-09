@@ -21,7 +21,7 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
 
     if @portfolio.save
-      redirect_to portfolios_path
+      redirect_to portfolios_path, notice: 'Portfolio created'
     else
       render :new
     end
@@ -32,7 +32,7 @@ class PortfoliosController < ApplicationController
 
   def update
     if @portfolio.update(portfolio_params)
-      redirect_to portfolios_path
+      redirect_to portfolios_path, notice: 'Portfolio updated'
     else
       render :edit
     end
