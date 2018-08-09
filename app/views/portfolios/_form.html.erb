@@ -1,4 +1,9 @@
 <%= form_for(portfolio) do |f| %>
+  <% if portfolio.errors.any? %>
+    <% portfolio.errors.full_messages.each do |msg| %>
+      <%= js add_gritter(msg, title: 'j2FunOnly Portfolio Site', sticky: false) %>
+    <% end %>
+  <% end %>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
