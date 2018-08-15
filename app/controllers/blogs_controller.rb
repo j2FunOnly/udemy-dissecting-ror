@@ -3,18 +3,21 @@ class BlogsController < ApplicationController
 
   access all: [:show, :index], site_admin: :all
 
-  before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
+  before_action :set_blog, only: [:edit, :update, :destroy, :toggle_status]
 
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.order(:created_at).page(params[:page]).per(5)
+    @blogs = Blog.order(created_at: :desc).page(params[:page]).per(5)
     @page_title = "My Portfolio Blog"
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @blog = Blog.includes(:comments).friendly.find(params[:id])
+    @comment = Comment.new
+
     @page_title = @blog.title
     @seo_keywords = @blog.body
   end

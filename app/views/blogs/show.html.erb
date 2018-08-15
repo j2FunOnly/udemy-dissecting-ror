@@ -10,5 +10,14 @@
       </p>
     <% end %>
     <p><%= @blog.body %></p>
+
+    <!-- Comments -->
+    <div id="comments" data-blog-id="<%= @blog.id %>">
+      <%= render @blog.comments %>
+    </div>
+
+    <!-- comment form -->
+    <%= render 'comment_form', comment: @comment unless current_user.is_a? GuestUser %>
+
   </div><!-- /.blog-post -->
 </div>

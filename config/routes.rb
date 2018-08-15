@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
   devise_for :users, path: '',
     path_names: {
       sign_in: 'login',
@@ -22,6 +21,8 @@ Rails.application.routes.draw do
       post :toggle_status
     end
   end
+
+  mount ActionCable.server => '/cable'
 
   root 'pages#home'
 end

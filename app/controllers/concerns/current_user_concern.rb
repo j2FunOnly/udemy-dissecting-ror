@@ -6,9 +6,6 @@ module CurrentUserConcern
   end
 
   def guest_user
-    @guest ||= GuestUser.new.tap do |g|
-      g.name = "Guest User"
-      g.email = "guest@example.com"
-    end
+    @guest ||= GuestUser.build
   end
 end
