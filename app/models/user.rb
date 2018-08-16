@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def last_name
     name.split.last
   end
+
+  def gravatar_url
+    "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}"
+  end
 end

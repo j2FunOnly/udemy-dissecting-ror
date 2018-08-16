@@ -1,9 +1,11 @@
-<%= form_for comment, url: '#' do |f| %>
+<div class="comment-form">
+  <%= form_for comment, url: '#' do |f| %>
   <div class="form-group">
-    <%= f.label :content %>
+    <%= f.label :content, 'Leave a comment' %>
     <%= f.text_area :content, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.submit 'Post comment', class: 'btn btn-primary' %>
   </div>
-<% end %>
+  <% end %>
+</div>
