@@ -4,6 +4,7 @@ class BlogsController < ApplicationController
   access all: [:show, :index], site_admin: :all
 
   before_action :set_blog, only: [:edit, :update, :destroy, :toggle_status]
+  before_action :set_sidebar_topics, only: [:index, :show, :new, :edit]
 
   # GET /blogs
   # GET /blogs.json
@@ -87,13 +88,18 @@ class BlogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_blog
-      @blog = Blog.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def blog_params
-      params.require(:blog).permit(:title, :body, :topic_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_blog
+    @blog = Blog.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def blog_params
+    params.require(:blog).permit(:title, :body, :topic_id)
+  end
+
+  def set_sidebar_topics
+    @sidebar_topics = Topic.with_blogs
+  end
 end
