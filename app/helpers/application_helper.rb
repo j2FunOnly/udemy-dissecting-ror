@@ -5,7 +5,7 @@ module ApplicationHelper
       ' ' +
       (link_to "Register", new_user_registration_path, class: "#{style} #{nav_active? new_user_registration_path}")
     else
-      link_to "Logout", destroy_user_session_path, method: :delete, class: style
+      link_to(" Logout", destroy_user_session_path, method: :delete, class: style)
     end
   end
 
