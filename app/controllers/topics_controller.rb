@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  include SidebarTopics
+
   layout 'blog'
 
   before_action :set_sidebar_topics
@@ -15,11 +17,5 @@ class TopicsController < ApplicationController
     else
       @topic.blogs.published.recent.page(params[:page]).per(5)
     end
-  end
-
-  private
-
-  def set_sidebar_topics
-    @sidebar_topics = Topic.with_blogs
   end
 end
