@@ -10,7 +10,7 @@
         <%= link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
       </p>
     <% end %>
-    <p><%= @blog.body %></p>
+    <p><%= markdown @blog.body %></p>
   </div><!-- /.blog-post -->
 
   <div id="comments" data-blog-id="<%= @blog.id %>">
