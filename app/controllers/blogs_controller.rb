@@ -25,7 +25,7 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.includes(comments: [:user]).friendly.find(params[:id])
 
-    if logged_in? :site_admin || @blog.published?
+    if logged_in?(:site_admin) || @blog.published?
       @comment = Comment.new
       @page_title = @blog.title
       @seo_keywords = @blog.body
