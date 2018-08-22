@@ -3,6 +3,10 @@ module BlogsHelper
     image_tag user.gravatar_url, width: 20
   end
 
+  def blog_status_icon(blog)
+    blog.published? ? 'eye' : 'eye-slash'
+  end
+
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language)
       language ||= :plaintext

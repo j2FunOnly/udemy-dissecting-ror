@@ -1,0 +1,7 @@
+<% if logged_in?(:site_admin) %>
+  <p class="blog-post-meta">
+    <%= link_to fa_icon(blog_status_icon(blog)), toggle_status_blog_path(blog), method: :post, class: 'btn btn-sm btn-light' %>
+    <%= link_to fa_icon('pencil'), edit_blog_path(blog), class: 'btn btn-sm btn-light' %>
+    <%= link_to fa_icon('trash'), blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+  </p>
+<% end %>
