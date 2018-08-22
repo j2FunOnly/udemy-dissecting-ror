@@ -9,12 +9,12 @@ module ApplicationHelper
     end
   end
 
-  def source_helper
-    return unless session[:source]
-
-    greeting = "Thank you for visiting me from #{escape_once session[:source]}"
-    content_tag :p, greeting, class: 'source-greeting'
-  end
+  # def source_helper(style = '')
+  #   return unless session[:source]
+  #
+  #   greeting = "Thank you for visiting me from #{escape_once session[:source]}"
+  #   content_tag :div, greeting, class: style
+  # end
 
   def generate_copyright
     SimpleViewToolService::Renderer.copyright 'j2FunOnly', 'Sample message'
