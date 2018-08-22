@@ -21,7 +21,11 @@
       <%= render 'shared/application_nav' %>
 
       <main role="main" class="inner cover">
-        <%= yield %>
+        <div class="card">
+          <div class="card-body">
+            <%= yield %>
+          </div>
+        </div>
       </main>
 
       <%= render 'shared/application_footer' %>
